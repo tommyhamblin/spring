@@ -17,7 +17,10 @@
 package com.spring.testbed.repository;
 
 import com.spring.testbed.model.DataObject;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -28,6 +31,10 @@ import java.util.List;
 @org.springframework.stereotype.Repository("repository")
 public class Repository implements IRepository
 {
+    /** Instance of {@link Calendar}. */
+    @Autowired
+    private Calendar cal;
+
     /**
      * Default constructor.
      */
@@ -48,6 +55,9 @@ public class Repository implements IRepository
         final DataObject dataObject = new DataObject();
         dataObject.setFirstVariable("Tommy"); //NON-NLS
         dataObject.setSecondVariable("Hamblin"); //NON-NLS
+
+        System.out.println("Cal: " + cal.getTime());
+
         dataObjects.add(dataObject);
 
         return dataObjects;

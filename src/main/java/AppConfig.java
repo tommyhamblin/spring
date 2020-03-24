@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-import com.spring.testbed.repository.Repository;
-import com.spring.testbed.repository.IRepository;
-import com.spring.testbed.service.IService;
-import com.spring.testbed.service.Service;
-import org.springframework.beans.factory.config.BeanDefinition;
+import com.spring.testbed.util.CalendarFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+
+import java.util.Calendar;
 
 /**
  * The application configuration to wire up the Spring beans.
@@ -33,6 +30,30 @@ import org.springframework.context.annotation.Scope;
 @ComponentScan({"com.spring.testbed"})
 public class AppConfig
 {
+    /**
+     * The bean factory for the calendar objects.
+     *
+     * @return CalendarFactory - the bean factory.
+     */
+    @Bean(name = "cal")
+    public CalendarFactory calFactory()
+    {
+        CalendarFactory factory = new CalendarFactory();
+        factory.addDays(2);
+        return factory;
+    }
+
+    /**
+     * Gets the calendar object from the bean factory.
+     *
+     * @return Calendar - the object representing a calendar.
+     * @throws Exception in case of creation errors.
+     */
+    public Calendar cal() throws Exception
+    {
+        return calFactory().getObject();
+    }
+
 //    /**
 //     * The bean for the service layer.
 //     *

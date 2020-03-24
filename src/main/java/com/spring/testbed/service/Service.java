@@ -20,6 +20,7 @@ import com.spring.testbed.model.DataObject;
 import com.spring.testbed.repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -40,6 +41,15 @@ public class Service implements IService
     {
         super();
         System.out.println("Service no args constructor");
+    }
+
+    /**
+     * Demos the construction of the auto-wired beans.
+     */
+    @PostConstruct
+    private void init()
+    {
+        System.out.println("We're called after the constructors");
     }
 
     /**
