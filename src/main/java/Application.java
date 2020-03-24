@@ -30,10 +30,16 @@ public class Application
      */
     public static void main(final String[] args)
     {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        IService service = applicationContext.getBean("service", IService.class);
+        IService service = appContext.getBean("service", IService.class);
+
+        System.out.println(service);
 
         System.out.println(service.retrieveData().get(0).getFirstVariable());
+
+        IService service2 = appContext.getBean("service", IService.class);
+
+        System.out.println(service2);
     }
 }

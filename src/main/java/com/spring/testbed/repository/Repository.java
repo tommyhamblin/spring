@@ -25,6 +25,7 @@ import java.util.List;
  *
  * @author tommy.hamblin.
  */
+@org.springframework.stereotype.Repository("repository")
 public class Repository implements IRepository
 {
     /**

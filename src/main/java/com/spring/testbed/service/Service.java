@@ -18,6 +18,8 @@ package com.spring.testbed.service;
 
 import com.spring.testbed.model.DataObject;
 import com.spring.testbed.repository.IRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 /**
@@ -25,6 +27,7 @@ import java.util.List;
  *
  * @author tommy.hamblin.
  */
+@org.springframework.stereotype.Service("service")
 public class Service implements IService
 {
     /** Instance of {@link IRepository}. */
@@ -32,13 +35,24 @@ public class Service implements IService
 
     /**
      * Default constructor.
+     */
+    public Service()
+    {
+        super();
+        System.out.println("Service no args constructor");
+    }
+
+    /**
+     * Autowired constructor.
      *
      * @param repository - instance of {@link IRepository}.
      */
+    @Autowired
     public Service(final IRepository repository)
     {
         super();
         this.repository = repository;
+        System.out.println("Service repository constructor");
     }
 
     /**
@@ -53,12 +67,13 @@ public class Service implements IService
     }
 
     /**
-     * Setter for dependency injection.
+     * Autowired setter for dependency injection.
      *
      * @param repository - instance of {@link IRepository}.
      */
     public void setRepository(final IRepository repository)
     {
         this.repository = repository;
+        System.out.println("Service setter");
     }
 }
