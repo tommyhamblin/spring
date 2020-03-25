@@ -33,13 +33,12 @@ public class Application
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
         IService service = appContext.getBean("service", IService.class);
-
-        System.out.println(service);
+//        System.out.println(service);
 
         System.out.println(service.retrieveData().get(0).getFirstVariable());
+        System.out.println(service.retrieveData().get(0).getSeedNum());
 
-        IService service2 = appContext.getBean("service", IService.class);
-
-        System.out.println(service2);
+//        IService service2 = appContext.getBean("service", IService.class);
+//        System.out.println(service2);
     }
 }

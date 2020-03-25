@@ -18,6 +18,7 @@ package com.spring.testbed.repository;
 
 import com.spring.testbed.model.DataObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,6 +35,10 @@ public class Repository implements IRepository
     /** Instance of {@link Calendar}. */
     @Autowired
     private Calendar cal;
+
+    /** Use spring expression language to generate random seed num. */
+    @Value("#{ T(java.lang.Math).random() * 100}")
+    private double seedNum;
 
     /**
      * Default constructor.
@@ -55,6 +60,7 @@ public class Repository implements IRepository
         final DataObject dataObject = new DataObject();
         dataObject.setFirstVariable("Tommy"); //NON-NLS
         dataObject.setSecondVariable("Hamblin"); //NON-NLS
+        dataObject.setSeedNum(this.seedNum);
 
         System.out.println("Cal: " + cal.getTime());
 

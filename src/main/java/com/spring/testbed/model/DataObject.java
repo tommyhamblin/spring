@@ -29,6 +29,9 @@ public class DataObject
     /** The second variable in the data object. */
     private String secondVariable;
 
+    /** The value for the seed. */
+    private double seedNum;
+
     /**
      * Default constructor.
      */
@@ -75,5 +78,25 @@ public class DataObject
     public void setSecondVariable(final String secondVariable)
     {
         this.secondVariable = secondVariable;
+    }
+
+    /**
+     * Getter.
+     *
+     * @return seedNum - the seed value.
+     */
+    public double getSeedNum()
+    {
+        return this.seedNum;
+    }
+
+    /**
+     * Setter.
+     *
+     * @param seedNum - the seed value to set.
+     */
+    public void setSeedNum(final double seedNum)
+    {
+        this.seedNum = seedNum;
     }
 }
